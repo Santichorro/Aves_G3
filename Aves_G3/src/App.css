@@ -1,0 +1,229 @@
+#site-header {
+  background: var(--text-h);
+  color: #fff;
+
+  .header-top {
+    padding: 40px 20px 24px;
+    text-align: center;
+
+    h1 {
+      color: #fff;
+      margin: 0 0 8px;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.75);
+    }
+  }
+}
+
+#site-nav {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+#site-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 0;
+  margin: 0;
+}
+
+#site-nav a {
+  display: block;
+  padding: 16px 4px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid transparent;
+  transition: 0.3s;
+}
+
+#site-nav a:hover {
+  color: #fff;
+  border-bottom-color: var(--accent);
+}
+
+@media (max-width: 1024px) {
+  #site-nav ul {
+    flex-wrap: wrap;
+    gap: 16px 24px;
+  }
+}
+
+#especies {
+  padding-block: min(20vh, 2rem);
+  width: calc(min(76.5rem, 90%));
+  margin-inline: auto;
+  text-align: left;
+
+  h2 {
+    text-transform: capitalize;
+    letter-spacing: 0.025em;
+  }
+}
+
+.container {
+  margin-top: 3em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 18.75rem;
+    background: var(--clr);
+    border-radius: 1.25rem;
+    border-bottom-right-radius: 0;
+    overflow: hidden;
+
+    .box {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      border-radius: 1.25rem;
+      overflow: hidden;
+
+      .imgBox {
+        position: absolute;
+        inset: 0;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .icon {
+        position: absolute;
+        bottom: -0.375rem;
+        right: -0.375rem;
+        width: 6rem;
+        height: 6rem;
+        background: var(--clr);
+        border-top-left-radius: 50%;
+
+        &:hover .iconBox {
+          transform: scale(1.1);
+        }
+
+        &::before {
+          position: absolute;
+          content: '';
+          bottom: 0.375rem;
+          left: -1.25rem;
+          width: 1.25rem;
+          height: 1.25rem;
+          border-bottom-right-radius: 1.25rem;
+          box-shadow: 0.313rem 0.313rem 0 0.313rem #fff;
+        }
+        &::after {
+          position: absolute;
+          content: '';
+          top: -1.25rem;
+          right: 0.375rem;
+          width: 1.25rem;
+          height: 1.25rem;
+          border-bottom-right-radius: 1.25rem;
+          box-shadow: 0.313rem 0.313rem 0 0.313rem var(--clr);
+        }
+
+        .iconBox {
+          position: absolute;
+          inset: 0.625rem;
+          background: #79102d;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.3s;
+
+          span {
+            color: #fff;
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  ul {
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 0.625rem;
+
+    li {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 0.375rem 0.625rem;
+      border-radius: 0.188rem;
+
+      &.residente {
+        background: var(--accent-bg);
+        color: var(--accent);
+      }
+      &.migratoria {
+        background: rgba(121, 16, 45, 0.08);
+        color: var(--text-h);
+      }
+    }
+  }
+
+  .content {
+    padding: 0.938rem 0.625rem 0;
+
+    h3 {
+      text-transform: capitalize;
+      font-size: clamp(1.5rem, 1.3909rem + 0.4364vw, 1.8rem);
+      margin: 0;
+    }
+
+    .nombre-cientifico {
+      font-style: italic;
+      color: var(--text-h);
+      margin: 0.3rem 0 0.5rem;
+    }
+
+    p {
+      margin: 0.625rem 0 1.25rem;
+      color: #565656;
+    }
+  }
+}
+
+#site-footer {
+  margin-top: auto;
+  background: var(--text-h);
+  color: rgba(255, 255, 255, 0.75);
+
+  .footer-content {
+    width: calc(min(76.5rem, 90%));
+    margin-inline: auto;
+    padding: 32px 0;
+    text-align: center;
+
+    .footer-title {
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 14px;
+      margin-top: 4px;
+    }
+  }
+}
