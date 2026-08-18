@@ -1,3 +1,5 @@
+import './App.css'
+
 function App() {
   return (
     <>
@@ -19,6 +21,8 @@ function App() {
       <main id="site-body">
         <section id="especies">
           <h2>Especies de aves</h2>
+          <p>Conoce algunas de las especies que puedes avistar en la ciudad.</p>
+
           <div className="container">
             <div className="card">
               <div className="card-inner" style={{ '--clr': '#79102d' }}>
@@ -26,10 +30,9 @@ function App() {
                   <div className="imgBox">
                     <img src="https://picsum.photos/seed/barranquero/400/300" alt="Barranquero" />
                   </div>
-                  
                 </div>
               </div>
-              <ul>
+              <ul className="tags">
                 <li className="residente">Residente</li>
               </ul>
               <div className="content">
@@ -45,10 +48,9 @@ function App() {
                   <div className="imgBox">
                     <img src="https://picsum.photos/seed/garza/400/300" alt="Garza Real" />
                   </div>
-                  
                 </div>
               </div>
-              <ul>
+              <ul className="tags">
                 <li className="residente">Residente</li>
               </ul>
               <div className="content">
@@ -64,10 +66,9 @@ function App() {
                   <div className="imgBox">
                     <img src="https://picsum.photos/seed/azulejo/400/300" alt="Azulejo Común" />
                   </div>
-                  
                 </div>
               </div>
-              <ul>
+              <ul className="tags">
                 <li className="residente">Residente</li>
               </ul>
               <div className="content">
@@ -82,12 +83,8 @@ function App() {
 
       <footer id="site-footer">
         <div className="footer-content">
-          <p></p>
-          <p></p>
-          <p></p>
           <p className="footer-title">Aves de Cali</p>
           <p>Arquitectura de Sistemas Multimedia</p>
-          <p></p>
         </div>
       </footer>
     </>
