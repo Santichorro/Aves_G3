@@ -72,7 +72,7 @@ p {
   margin: 0;
 }
 
-/* ===== HEADER ===== */
+/*HEADER*/
 #site-header {
   background: var(--text-h);
   color: #fff;
@@ -132,12 +132,12 @@ p {
   }
 }
 
-/* ===== MAIN / BODY ===== */
+/*BODY*/
 #site-body {
   flex: 1;
 }
 
-/* ===== ESPECIES ===== */
+/*ESPECIES*/
 #especies {
   padding: 64px 24px;
   width: min(76.5rem, 90%);
@@ -165,7 +165,7 @@ p {
   gap: 2.25rem;
 }
 
-/* ===== CARD ===== */
+/*CARD*/
 .card {
   background: #fff;
   border-radius: 1.25rem;
@@ -257,7 +257,7 @@ p {
   }
 }
 
-/* ===== FOOTER ===== */
+/*FOOTER*/
 #site-footer {
   margin-top: auto;
   background: var(--text-h);
