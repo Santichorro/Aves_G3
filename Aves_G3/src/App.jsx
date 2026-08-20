@@ -1,5 +1,11 @@
 import './App.css'
 
+import barranqueroImg from './assets/IMG/Barranquero.jpg'
+import garzaRealImg from './assets/IMG/GarzaReal.jpg'
+import azulejoImg from './assets/IMG/AzulejoComun.jpg'
+import gallitoRocaImg from './assets/IMG/GallitoDeRoca.jpg'
+import toritoImg from './assets/IMG/ToritoCabecirrojo.jpg'
+
 function App() {
   return (
     <>
@@ -28,7 +34,7 @@ function App() {
               <div className="card-inner" style={{ '--clr': '#79102d' }}>
                 <div className="box">
                   <div className="imgBox">
-                    <img src="https://picsum.photos/seed/barranquero/400/300" alt="Barranquero" />
+                    <img src={barranqueroImg} alt="Barranquero" />
                   </div>
                 </div>
               </div>
@@ -38,7 +44,7 @@ function App() {
               <div className="content">
                 <h3>Barranquero</h3>
                 <p className="nombre-cientifico">Momotus subrufescens</p>
-                <p>Ave símbolo de la ciudad de Cali. Habita zonas de bosque y jardines urbanos con vegetación densa.</p>
+                <p>Ave símbolo de la ciudad de Cali, reconocida por su llamativa cola en forma de péndulo. Habita zonas de bosque y jardines urbanos con vegetación densa.</p>
               </div>
             </div>
 
@@ -46,7 +52,7 @@ function App() {
               <div className="card-inner" style={{ '--clr': '#fd0c21' }}>
                 <div className="box">
                   <div className="imgBox">
-                    <img src="https://picsum.photos/seed/garza/400/300" alt="Garza Real" />
+                    <img src={garzaRealImg} alt="Garza Real" />
                   </div>
                 </div>
               </div>
@@ -56,7 +62,7 @@ function App() {
               <div className="content">
                 <h3>Garza Real</h3>
                 <p className="nombre-cientifico">Ardea alba</p>
-                <p>Frecuente en humedales y orillas del río Cauca. Fácil de observar por su tamaño y plumaje blanco.</p>
+                <p>Ave de gran tamaño y plumaje blanco, frecuente en humedales y orillas del río Cauca. Suele observarse inmóvil junto al agua mientras acecha a su presa.</p>
               </div>
             </div>
 
@@ -64,7 +70,7 @@ function App() {
               <div className="card-inner" style={{ '--clr': '#bb0e27' }}>
                 <div className="box">
                   <div className="imgBox">
-                    <img src="https://picsum.photos/seed/azulejo/400/300" alt="Azulejo Común" />
+                    <img src={azulejoImg} alt="Azulejo Común" />
                   </div>
                 </div>
               </div>
@@ -74,7 +80,43 @@ function App() {
               <div className="content">
                 <h3>Azulejo Común</h3>
                 <p className="nombre-cientifico">Thraupis episcopus</p>
-                <p>Una de las aves más comunes en parques y separadores arborizados de la ciudad.</p>
+                <p>Una de las aves más comunes en parques y separadores arborizados de la ciudad. Se caracteriza por su plumaje azul turquesa y su comportamiento sociable.</p>
+              </div>
+            </div>
+
+            <div className="card">
+              <div className="card-inner" style={{ '--clr': '#d94a1d' }}>
+                <div className="box">
+                  <div className="imgBox">
+                    <img src={gallitoRocaImg} alt="Gallito de Roca Andino" />
+                  </div>
+                </div>
+              </div>
+              <ul className="tags">
+                <li className="residente">Residente</li>
+              </ul>
+              <div className="content">
+                <h3>Gallito de Roca Andino</h3>
+                <p className="nombre-cientifico">Rupicola peruvianus</p>
+                <p>Ave emblemática de los Andes, reconocida por su llamativo plumaje naranja y su cresta en forma de disco. Habita bosques de niebla cercanos a la ciudad.</p>
+              </div>
+            </div>
+
+            <div className="card">
+              <div className="card-inner" style={{ '--clr': '#a3122c' }}>
+                <div className="box">
+                  <div className="imgBox">
+                    <img src={toritoImg} alt="Torito Cabecirrojo" />
+                  </div>
+                </div>
+              </div>
+              <ul className="tags">
+                <li className="residente">Residente</li>
+              </ul>
+              <div className="content">
+                <h3>Torito Cabecirrojo</h3>
+                <p className="nombre-cientifico">Eubucco bourcierii</p>
+                <p>Ave de tamaño pequeño con marcado dimorfismo sexual: el macho luce cabeza roja intensa. Habita bosques húmedos de montaña en los alrededores de Cali.</p>
               </div>
             </div>
           </div>
