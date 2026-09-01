@@ -1,0 +1,8 @@
+.progressive-blur {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  user-select: none;
+  z-index: 500;
+}
