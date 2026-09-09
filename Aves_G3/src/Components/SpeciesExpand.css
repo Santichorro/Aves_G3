@@ -1,0 +1,107 @@
+.species-expand-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.species-expand-item {
+  position: relative;
+  width: 100%;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.species-expand-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.species-expand-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0) 75%
+  );
+}
+
+.species-expand-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.25rem 1.5rem 1.5rem;
+  text-align: left;
+  color: #fff;
+}
+
+.species-expand-tag {
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.25rem;
+  margin-bottom: 0.6rem;
+}
+
+.species-expand-tag--residente {
+  background: var(--accent);
+  color: #fff;
+}
+
+.species-expand-tag--migratoria {
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--text-h);
+}
+
+.species-expand-info h3 {
+  margin: 0;
+  font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.6rem);
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.species-expand-cientifico {
+  font-style: italic;
+  opacity: 0.85;
+  font-size: 0.9rem;
+  margin: 0.25rem 0 0.6rem;
+}
+
+.species-expand-desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.95;
+  max-width: 60ch;
+}
+
+.species-expand-collapsed-label {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  text-transform: capitalize;
+}
+
+@media (max-width: 1024px) {
+  .species-expand-item {
+    height: 3rem !important;
+  }
+}
