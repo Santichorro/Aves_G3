@@ -14,7 +14,6 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
-// Coordenadas aproximadas de Cali, Colombia
 const CALI_CENTER = [3.4516, -76.532];
 
 function MapaAves({ puntos = [] }) {
@@ -33,9 +32,17 @@ function MapaAves({ puntos = [] }) {
       {puntos.map((p, i) => (
         <Marker key={i} position={[p.lat, p.lng]}>
           <Popup>
-            <strong>{p.nombre}</strong>
-            <br />
-            {p.zona}
+            <div className="map-popup-card">
+              {p.probabilidad && (
+                <span
+                  className={`map-prob-tag map-prob-tag--${p.probabilidad.toLowerCase()}`}
+                >
+                  Probabilidad {p.probabilidad}
+                </span>
+              )}
+              <h4 className="map-popup-title">{p.nombre}</h4>
+              <p className="map-popup-zone">📍 {p.zona}</p>
+            </div>
           </Popup>
         </Marker>
       ))}

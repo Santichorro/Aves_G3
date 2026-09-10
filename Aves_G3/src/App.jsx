@@ -252,9 +252,41 @@ function App() {
             <div className="map-container">
               <MapaAves
                 puntos={[
-                  { lat: 3.4372, lng: -76.5225, nombre: "Barranquero", zona: "Zoológico de Cali" },
-                  { lat: 3.3833, lng: -76.5333, nombre: "Garza Real", zona: "Río Cauca - sector sur" },
-                  { lat: 3.4698, lng: -76.6180, nombre: "Gallito de Roca Andino", zona: "Farallones de Cali" },
+                  {
+                    lat: 3.4481,
+                    lng: -76.5576,
+                    nombre: "Barranquero",
+                    zona: "Zoológico de Cali & San Antonio",
+                    probabilidad: "Alta",
+                  },
+                  {
+                    lat: 3.3833,
+                    lng: -76.5333,
+                    nombre: "Garza Real",
+                    zona: "Humedal El Cortijo & Río Cauca",
+                    probabilidad: "Media",
+                  },
+                  {
+                    lat: 3.4533,
+                    lng: -76.5325,
+                    nombre: "Azulejo Común",
+                    zona: "Boulevard del Río & Parque del Perro",
+                    probabilidad: "Alta",
+                  },
+                  {
+                    lat: 3.4698,
+                    lng: -76.6180,
+                    nombre: "Gallito de Roca Andino",
+                    zona: "PNN Farallones (Sector San Antonio / Km 18)",
+                    probabilidad: "Baja",
+                  },
+                  {
+                    lat: 3.3250,
+                    lng: -76.6300,
+                    nombre: "Torito Cabecirrojo",
+                    zona: "Bosques del Km 18 & Cuenca Alta de Pance",
+                    probabilidad: "Media",
+                  },
                 ]}
               />
 

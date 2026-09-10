@@ -867,3 +867,66 @@ p {
     bottom: 10px !important;
   }
 }
+
+
+
+/* Ajustes al contenedor nativo de Leaflet */
+.leaflet-popup-content-wrapper {
+  padding: 6px;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15) !important;
+}
+
+.leaflet-popup-content {
+  margin: 8px 12px !important;
+  line-height: 1.4 !important;
+}
+
+/* Card interna */
+.map-popup-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 170px;
+}
+
+/* Etiqueta / Badge de probabilidad */
+.map-prob-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #ffffff !important;
+  margin-bottom: 2px;
+}
+
+.map-prob-tag--alta {
+  background-color: #10b981;
+}
+
+.map-prob-tag--media {
+  background-color: #f59e0b;
+}
+
+.map-prob-tag--baja {
+  background-color: #ef4444;
+}
+
+/* Título de la especie */
+.map-popup-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Ubicación / Zona */
+.map-popup-zone {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #64748b;
+}
