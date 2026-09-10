@@ -3,7 +3,29 @@ import { useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "./SpeciesExpand.css";
 
-const SpeciesExpand = ({ species = [] }) => {
+const getYouTubeEmbedUrl = (url) => {
+  if (!url) return "";
+  try {
+    if (url.includes("/embed/")) {
+      const id = url.split("/embed/")[1]?.split("?")[0];
+      return `https://www.youtube.com/embed/${id}`;
+    }
+    const parsed = new URL(url);
+    if (parsed.hostname.includes("youtu.be")) {
+      const id = parsed.pathname.slice(1).split("/")[0];
+      return `https://www.youtube.com/embed/${id}`;
+    }
+    if (parsed.hostname.includes("youtube.com")) {
+      const id = parsed.searchParams.get("v");
+      if (id) return `https://www.youtube.com/embed/${id}`;
+    }
+  } catch (error) {
+    console.error("Error al procesar la URL del video:", error);
+  }
+  return url;
+};
+
+const SpeciesExpand = ({ species = [], onVerEnMapa }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [selectedSpecie, setSelectedSpecie] = useState(null);
   const [playingIndex, setPlayingIndex] = useState(null);
@@ -12,7 +34,6 @@ const SpeciesExpand = ({ species = [] }) => {
   const audioRefs = useRef([]);
   const modalAudioRef = useRef(null);
 
-  // Manejo del audio en la lista de acordeón
   const handleAudio = (event, index) => {
     event.stopPropagation();
     const audio = audioRefs.current[index];
@@ -32,10 +53,12 @@ const SpeciesExpand = ({ species = [] }) => {
     });
 
     audio.currentTime = 0;
-    audio.play().then(() => setPlayingIndex(index)).catch(console.error);
+    audio
+      .play()
+      .then(() => setPlayingIndex(index))
+      .catch(console.error);
   };
 
-  // Manejo del audio dentro del modal
   const handleModalAudio = (e) => {
     e.stopPropagation();
     if (!modalAudioRef.current) return;
@@ -60,12 +83,21 @@ const SpeciesExpand = ({ species = [] }) => {
     setSelectedSpecie(null);
   };
 
+  const handleIrAlMapa = () => {
+    if (!selectedSpecie) return;
+    const nombre = selectedSpecie.nombre;
+    closeModal();
+    if (onVerEnMapa) {
+      onVerEnMapa(nombre);
+    }
+  };
+
   return (
     <div
       className="species-expand-list"
       onMouseLeave={() => setActiveIndex(null)}
     >
-      {/* LISTA EN ACORDEÓN (HOVER) */}
+      {/* ACORDEÓN EN HOVER */}
       {species.map((item, index) => {
         const isActive = activeIndex === index;
         const isPlaying = playingIndex === index;
@@ -75,12 +107,16 @@ const SpeciesExpand = ({ species = [] }) => {
             key={item.nombre}
             className="species-expand-item"
             initial={{ height: "3.5rem" }}
-            animate={{ height: isActive ? "15rem" : "3.5rem" }}
+            animate={{ height: isActive ? "16rem" : "3.5rem" }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
             onMouseEnter={() => setActiveIndex(index)}
             onClick={() => setSelectedSpecie(item)}
           >
-            <img src={item.img} alt={item.alt} className="species-expand-img" />
+            <img
+              src={item.img}
+              alt={item.alt}
+              className="species-expand-img"
+            />
 
             {item.audio && (
               <audio
@@ -112,18 +148,36 @@ const SpeciesExpand = ({ species = [] }) => {
                   exit={{ opacity: 0, y: 10 }}
                   className="species-expand-info"
                 >
-                  <span
-                    className={`species-expand-tag species-expand-tag--${
-                      item.estado === "Migratoria" ? "migratoria" : "residente"
-                    }`}
-                  >
-                    {item.estado}
-                  </span>
+                  <div className="species-tags-wrapper">
+                    <span
+                      className={`species-expand-tag species-expand-tag--${
+                        item.estado === "Migratoria"
+                          ? "migratoria"
+                          : "residente"
+                      }`}
+                    >
+                      {item.estado}
+                    </span>
+                    {item.probabilidad && (
+                      <span
+                        className={`species-prob-tag species-prob-tag--${item.probabilidad.toLowerCase()}`}
+                      >
+                        Probabilidad {item.probabilidad}
+                      </span>
+                    )}
+                  </div>
 
                   <h3>{item.nombre}</h3>
                   <p className="species-expand-cientifico">
                     {item.nombreCientifico}
                   </p>
+
+                  {item.horario && (
+                    <span className="species-expand-time-badge">
+                      🕒 {item.horario}
+                    </span>
+                  )}
+
                   <p className="species-expand-desc">{item.descripcion}</p>
 
                   <div className="species-expand-actions">
@@ -136,13 +190,13 @@ const SpeciesExpand = ({ species = [] }) => {
                         onClick={(e) => handleAudio(e, index)}
                       >
                         <span className="species-audio-icon">
-                          {isPlaying ? "Ⅱ" : "▶"}
+                          {isPlaying ? "⏸" : "▶"}
                         </span>
                         <span>{isPlaying ? "Pausar" : "Escuchar canto"}</span>
                       </button>
                     )}
                     <span className="species-click-hint">
-                      Clic para ver detalles ↗
+                      Clic para ver detalles
                     </span>
                   </div>
                 </motion.div>
@@ -158,7 +212,7 @@ const SpeciesExpand = ({ species = [] }) => {
         );
       })}
 
-      {/* MODAL RENDERIZADO FUERA DEL DOM PRINCIPAL */}
+      {/* MODAL DETALLADO CON PORTAL */}
       {createPortal(
         <AnimatePresence>
           {selectedSpecie && (
@@ -180,7 +234,7 @@ const SpeciesExpand = ({ species = [] }) => {
                 <button
                   className="species-modal-close"
                   onClick={closeModal}
-                  aria-label="Cerrar"
+                  aria-label="Cerrar modal"
                 >
                   ✕
                 </button>
@@ -188,12 +242,14 @@ const SpeciesExpand = ({ species = [] }) => {
                 <div className="species-modal-media">
                   {selectedSpecie.video ? (
                     selectedSpecie.video.includes("youtube") ||
+                    selectedSpecie.video.includes("youtu.be") ||
                     selectedSpecie.video.includes("embed") ? (
                       <iframe
                         className="species-modal-video"
-                        src={selectedSpecie.video}
+                        src={getYouTubeEmbedUrl(selectedSpecie.video)}
                         title={`Video de ${selectedSpecie.nombre}`}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
                         allowFullScreen
                       />
                     ) : (
@@ -216,26 +272,64 @@ const SpeciesExpand = ({ species = [] }) => {
                 </div>
 
                 <div className="species-modal-info">
-                  <span
-                    className={`species-expand-tag species-expand-tag--${
-                      selectedSpecie.estado === "Migratoria"
-                        ? "migratoria"
-                        : "residente"
-                    }`}
-                  >
-                    {selectedSpecie.estado}
-                  </span>
+                  <div className="species-tags-wrapper">
+                    <span
+                      className={`species-expand-tag species-expand-tag--${
+                        selectedSpecie.estado === "Migratoria"
+                          ? "migratoria"
+                          : "residente"
+                      }`}
+                    >
+                      {selectedSpecie.estado}
+                    </span>
+                    {selectedSpecie.probabilidad && (
+                      <span
+                        className={`species-prob-tag species-prob-tag--${selectedSpecie.probabilidad.toLowerCase()}`}
+                      >
+                        Probabilidad {selectedSpecie.probabilidad}
+                      </span>
+                    )}
+                  </div>
 
                   <h2>{selectedSpecie.nombre}</h2>
                   <p className="species-expand-cientifico">
                     {selectedSpecie.nombreCientifico}
                   </p>
 
-                  {selectedSpecie.ubicacion && (
-                    <div className="species-modal-location">
-                      📍 <strong>Ubicación:</strong> {selectedSpecie.ubicacion}
+                  {selectedSpecie.horario && (
+                    <div className="species-modal-meta-box">
+                      <strong>🕒 Horario recomendado:</strong>{" "}
+                      {selectedSpecie.horario}
                     </div>
                   )}
+
+                  {selectedSpecie.ubicacion && (
+                    <div className="species-modal-location">
+                      <strong>📍 Ubicación:</strong> {selectedSpecie.ubicacion}
+                    </div>
+                  )}
+
+                  {/* ACCIONES DE RUTA Y MAPA */}
+                  <div className="species-modal-nav-actions">
+                    <button
+                      type="button"
+                      className="species-btn-mapa"
+                      onClick={handleIrAlMapa}
+                    >
+                      🗺️ Ubicar en el mapa interactivo
+                    </button>
+
+                    <a
+                      href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+                        `${selectedSpecie.nombre}, ${selectedSpecie.ubicacion}`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="species-btn-route"
+                    >
+                      🧭 Cómo llegar desde mi ubicación
+                    </a>
+                  </div>
 
                   <p className="species-expand-desc">
                     {selectedSpecie.descripcion}
@@ -256,7 +350,7 @@ const SpeciesExpand = ({ species = [] }) => {
                         onClick={handleModalAudio}
                       >
                         <span className="species-audio-icon">
-                          {modalIsPlaying ? "Ⅱ" : "▶"}
+                          {modalIsPlaying ? "⏸" : "▶"}
                         </span>
                         <span>
                           {modalIsPlaying ? "Pausar canto" : "Escuchar canto"}
