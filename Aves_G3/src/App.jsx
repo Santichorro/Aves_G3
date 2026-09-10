@@ -6,6 +6,13 @@ import azulejoImg from "./assets/IMG/AzulejoComunChinese.jpg";
 import gallitoRocaImg from "./assets/IMG/GallitoDeRocaChinese.jpg";
 import toritoImg from "./assets/IMG/ToritoCabecirrojoChinese.jpg";
 
+// AUDIOS
+import barranqueroAudio from "./assets/audio/barranquero.wav";
+import garzaRealAudio from "./assets/audio/garzaReal.wav";
+import azulejoAudio from "./assets/audio/azulejoComun.wav";
+import gallitoRocaAudio from "./assets/audio/GallitoRoca.mp3";
+import toritoAudio from "./assets/audio/toritoCabecirrojo.wav";
+
 import CursorFollow from "./Components/MouseFollow";
 import SpeciesExpand from "./Components/SpeciesExpand";
 import ProgressiveBlur from "./Components/ProgressiveBlur";
@@ -21,42 +28,51 @@ const especies = [
     nombre: "Barranquero",
     nombreCientifico: "Momotus subrufescens",
     estado: "Residente",
+    audio: barranqueroAudio,
     descripcion:
       "Ave símbolo de la ciudad de Cali, reconocida por su llamativa cola en forma de péndulo. Habita zonas de bosque y jardines urbanos con vegetación densa.",
   },
+
   {
     img: garzaRealImg,
     alt: "Garza Real",
     nombre: "Garza Real",
     nombreCientifico: "Ardea alba",
     estado: "Residente",
+    audio: garzaRealAudio,
     descripcion:
       "Ave de gran tamaño y plumaje blanco, frecuente en humedales y orillas del río Cauca. Suele observarse inmóvil junto al agua mientras acecha a su presa.",
   },
+
   {
     img: azulejoImg,
     alt: "Azulejo Común",
     nombre: "Azulejo Común",
     nombreCientifico: "Thraupis episcopus",
     estado: "Residente",
+    audio: azulejoAudio,
     descripcion:
       "Una de las aves más comunes en parques y separadores arborizados de la ciudad. Se caracteriza por su plumaje azul turquesa y su comportamiento sociable.",
   },
+
   {
     img: gallitoRocaImg,
     alt: "Gallito de Roca Andino",
     nombre: "Gallito de Roca Andino",
     nombreCientifico: "Rupicola peruvianus",
     estado: "Residente",
+    audio: gallitoRocaAudio,
     descripcion:
       "Ave emblemática de los Andes, reconocida por su llamativo plumaje naranja y su cresta en forma de disco. Habita bosques de niebla cercanos a la ciudad.",
   },
+
   {
     img: toritoImg,
     alt: "Torito Cabecirrojo",
     nombre: "Torito Cabecirrojo",
     nombreCientifico: "Eubucco bourcierii",
     estado: "Residente",
+    audio: toritoAudio,
     descripcion:
       "Ave de tamaño pequeño con marcado dimorfismo sexual: el macho luce cabeza roja intensa. Habita bosques húmedos de montaña en los alrededores de Cali.",
   },
@@ -64,10 +80,26 @@ const especies = [
 
 function App() {
   const dockItems = [
-    { label: "Inicio", href: "#inicio", icon: <Home size={22} strokeWidth={1.8} /> },
-    { label: "Especies", href: "#especies", icon: <Bird size={22} strokeWidth={1.8} /> },
-    { label: "Mapa", href: "#mapa", icon: <Map size={22} strokeWidth={1.8} /> },
-    { label: "Acerca", href: "#acerca", icon: <Info size={22} strokeWidth={1.8} /> },
+    {
+      label: "Inicio",
+      href: "#inicio",
+      icon: <Home size={22} strokeWidth={1.8} />,
+    },
+    {
+      label: "Especies",
+      href: "#especies",
+      icon: <Bird size={22} strokeWidth={1.8} />,
+    },
+    {
+      label: "Mapa",
+      href: "#mapa",
+      icon: <Map size={22} strokeWidth={1.8} />,
+    },
+    {
+      label: "Acerca",
+      href: "#acerca",
+      icon: <Info size={22} strokeWidth={1.8} />,
+    },
   ];
 
   return (
@@ -79,7 +111,9 @@ function App() {
       {/* Header / Hero */}
       <header id="site-header">
         <div className="header-top">
-          <span className="header-label">NUESTRA CASA COMPARTIDA</span>
+          <span className="header-label">
+            NUESTRA CASA COMPARTIDA
+          </span>
 
           <h1>
             Cali, capital
@@ -115,9 +149,14 @@ function App() {
           <section id="inicio" className="intro-section">
             <div className="section-heading">
               <span className="section-number">01</span>
+
               <div>
-                <span className="section-label">DESCUBRE CALI</span>
+                <span className="section-label">
+                  DESCUBRE CALI
+                </span>
+
                 <h2>Un hábitat vivo.</h2>
+
                 <p>
                   Santiago de Cali y su entorno reúnen
                   diferentes ecosistemas donde habitan
@@ -132,14 +171,17 @@ function App() {
                 <span>01</span>
                 <h3>Bosques de niebla</h3>
               </div>
+
               <div className="habitat-item">
                 <span>02</span>
                 <h3>Humedales</h3>
               </div>
+
               <div className="habitat-item">
                 <span>03</span>
                 <h3>Ríos</h3>
               </div>
+
               <div className="habitat-item">
                 <span>04</span>
                 <h3>Parques urbanos</h3>
@@ -148,12 +190,20 @@ function App() {
           </section>
 
           {/* 02 — Especies */}
-          <section id="especies" className="species-section">
+          <section
+            id="especies"
+            className="species-section"
+          >
             <div className="section-heading">
               <span className="section-number">02</span>
+
               <div>
-                <span className="section-label">EXPLORACIÓN</span>
+                <span className="section-label">
+                  EXPLORACIÓN
+                </span>
+
                 <h2>Conoce sus habitantes.</h2>
+
                 <p>
                   Explora algunas de las especies de aves
                   presentes en Cali y conoce sus principales
@@ -174,9 +224,14 @@ function App() {
           <section id="mapa" className="map-section">
             <div className="section-heading">
               <span className="section-number">03</span>
+
               <div>
-                <span className="section-label">CARTOGRAFÍA</span>
+                <span className="section-label">
+                  CARTOGRAFÍA
+                </span>
+
                 <h2>Encuéntralas en Cali.</h2>
+
                 <p>
                   Descubre las zonas donde existe mayor
                   probabilidad de avistamiento de cada especie.
@@ -194,8 +249,12 @@ function App() {
               />
 
               <div className="map-overlay">
-                <span className="map-status">MAPA INTERACTIVO</span>
+                <span className="map-status">
+                  MAPA INTERACTIVO
+                </span>
+
                 <h3>Explora Cali</h3>
+
                 <p>
                   Selecciona una especie para conocer
                   las zonas donde puedes encontrarla.
@@ -204,9 +263,21 @@ function App() {
 
               <div className="map-legend">
                 <span>Probabilidad</span>
-                <div><i></i>Alta</div>
-                <div><i></i>Media</div>
-                <div><i></i>Baja</div>
+
+                <div>
+                  <i></i>
+                  Alta
+                </div>
+
+                <div>
+                  <i></i>
+                  Media
+                </div>
+
+                <div>
+                  <i></i>
+                  Baja
+                </div>
               </div>
             </div>
           </section>
@@ -215,9 +286,14 @@ function App() {
           <section id="acerca" className="about-section">
             <div className="section-heading">
               <span className="section-number">04</span>
+
               <div>
-                <span className="section-label">EL PROYECTO</span>
+                <span className="section-label">
+                  EL PROYECTO
+                </span>
+
                 <h2>Nuestra casa compartida.</h2>
+
                 <p>
                   Esta aplicación web busca acercar a la
                   ciudadanía a las aves que habitan Cali
@@ -231,15 +307,23 @@ function App() {
             <div className="about-details">
               <div>
                 <span>PROYECTO</span>
-                <p>Arquitectura de Sistemas Multimedia</p>
+                <p>
+                  Arquitectura de Sistemas Multimedia
+                </p>
               </div>
+
               <div>
                 <span>UNIVERSIDAD</span>
-                <p>Universidad Autónoma de Occidente</p>
+                <p>
+                  Universidad Autónoma de Occidente
+                </p>
               </div>
+
               <div>
                 <span>RECURSOS</span>
-                <p>Recursos abiertos y gratuitos</p>
+                <p>
+                  Recursos abiertos y gratuitos
+                </p>
               </div>
             </div>
           </section>
@@ -251,18 +335,29 @@ function App() {
       <footer id="site-footer">
         <div className="footer-content">
           <div>
-            <p className="footer-title">Aves de Cali</p>
+            <p className="footer-title">
+              Aves de Cali
+            </p>
+
             <p>Nuestra casa compartida.</p>
           </div>
 
           <div>
-            <p>Arquitectura de Sistemas Multimedia</p>
-            <p>Universidad Autónoma de Occidente</p>
+            <p>
+              Arquitectura de Sistemas Multimedia
+            </p>
+
+            <p>
+              Universidad Autónoma de Occidente
+            </p>
           </div>
 
           <div>
             <a href="#">GitHub</a>
-            <p>Código y recursos abiertos</p>
+
+            <p>
+              Código y recursos abiertos
+            </p>
           </div>
         </div>
 
