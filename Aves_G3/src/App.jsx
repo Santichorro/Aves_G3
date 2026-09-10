@@ -7,11 +7,11 @@ import gallitoRocaImg from "./assets/IMG/GallitoDeRocaChinese.jpg";
 import toritoImg from "./assets/IMG/ToritoCabecirrojoChinese.jpg";
 
 // AUDIOS
-import barranqueroAudio from "./assets/audio/barranquero.wav";
-import garzaRealAudio from "./assets/audio/garzaReal.wav";
-import azulejoAudio from "./assets/audio/azulejoComun.wav";
-import gallitoRocaAudio from "./assets/audio/GallitoRoca.mp3";
-import toritoAudio from "./assets/audio/toritoCabecirrojo.wav";
+import barranqueroAudio from "./assets/Audio/barranquero.mp3";
+import garzaRealAudio from "./assets/Audio/garzaReal.mp3";
+import azulejoAudio from "./assets/Audio/azulejoComun.mp3";
+import gallitoRocaAudio from "./assets/Audio/GallitoRoca.mp3";
+import toritoAudio from "./assets/Audio/toritoCabecirrojo.mp3";
 
 import CursorFollow from "./Components/MouseFollow";
 import SpeciesExpand from "./Components/SpeciesExpand";
