@@ -10,6 +10,7 @@ import CursorFollow from "./Components/MouseFollow";
 import SpeciesExpand from "./Components/SpeciesExpand";
 import ProgressiveBlur from "./Components/ProgressiveBlur";
 import Dock from "./Components/Dock";
+import MapaAves from "./Components/MapaAves";
 
 import { Home, Bird, Map, Info } from "lucide-react";
 
@@ -183,8 +184,15 @@ function App() {
               </div>
             </div>
 
-            {/* Contenedor temporal del mapa */}
             <div className="map-container">
+              <MapaAves
+                puntos={[
+                  { lat: 3.4372, lng: -76.5225, nombre: "Barranquero", zona: "Zoológico de Cali" },
+                  { lat: 3.3833, lng: -76.5333, nombre: "Garza Real", zona: "Río Cauca - sector sur" },
+                  { lat: 3.4698, lng: -76.6180, nombre: "Gallito de Roca Andino", zona: "Farallones de Cali" },
+                ]}
+              />
+
               <div className="map-overlay">
                 <span className="map-status">MAPA INTERACTIVO</span>
                 <h3>Explora Cali</h3>
