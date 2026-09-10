@@ -139,6 +139,33 @@ const puntosMapa = [
   },
 ];
 
+const habitats = [
+  {
+    numero: "01",
+    nombre: "Bosques de niebla",
+    imagen:
+      "https://images.pexels.com/photos/535188/pexels-photo-535188.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  },
+  {
+    numero: "02",
+    nombre: "Humedales",
+    imagen:
+      "https://images.pexels.com/photos/27629633/pexels-photo-27629633.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  },
+  {
+    numero: "03",
+    nombre: "Ríos",
+    imagen:
+      "https://images.pexels.com/photos/12266046/pexels-photo-12266046.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  },
+  {
+    numero: "04",
+    nombre: "Parques urbanos",
+    imagen:
+      "https://images.pexels.com/photos/9408180/pexels-photo-9408180.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  },
+];
+
 function App() {
   const [aveSeleccionadaMapa, setAveSeleccionadaMapa] = useState("Todas");
 
@@ -223,23 +250,22 @@ function App() {
                 </p>
               </div>
             </div>
-            <div className="habitats">
-              <div className="habitat-item">
-                <span>01</span>
-                <h3>Bosques de niebla</h3>
-              </div>
-              <div className="habitat-item">
-                <span>02</span>
-                <h3>Humedales</h3>
-              </div>
-              <div className="habitat-item">
-                <span>03</span>
-                <h3>Ríos</h3>
-              </div>
-              <div className="habitat-item">
-                <span>04</span>
-                <h3>Parques urbanos</h3>
-              </div>
+                        <div className="habitats">
+              {habitats.map((habitat) => (
+                <div className="habitat-item" key={habitat.numero}>
+                  <img
+                    src={habitat.imagen}
+                    alt={habitat.nombre}
+                    className="habitat-img"
+                    loading="lazy"
+                  />
+                  <div className="habitat-overlay" />
+                  <div className="habitat-content">
+                    <span>{habitat.numero}</span>
+                    <h3>{habitat.nombre}</h3>
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
 
