@@ -31,6 +31,8 @@ const especies = [
     audio: barranqueroAudio,
     descripcion:
       "Ave símbolo de la ciudad de Cali, reconocida por su llamativa cola en forma de péndulo. Habita zonas de bosque y jardines urbanos con vegetación densa.",
+    ubicacion: "Zoológico de Cali, San Antonio y Ecoparque Bataclán",
+    video: "https://www.youtube.com/embed/TwfFgGpLIvs",
   },
 
   {
@@ -42,6 +44,8 @@ const especies = [
     audio: garzaRealAudio,
     descripcion:
       "Ave de gran tamaño y plumaje blanco, frecuente en humedales y orillas del río Cauca. Suele observarse inmóvil junto al agua mientras acecha a su presa.",
+    ubicacion: "Humedal El Cortijo, Corredor del Río Cauca y Ecocentro Pance",
+    video: "https://www.youtube.com/embed/P8yttfEYVVo",
   },
 
   {
@@ -53,6 +57,8 @@ const especies = [
     audio: azulejoAudio,
     descripcion:
       "Una de las aves más comunes en parques y separadores arborizados de la ciudad. Se caracteriza por su plumaje azul turquesa y su comportamiento sociable.",
+    ubicacion: "Parque del Perro, Boulevard del Río y zonas urbanas de Cali",
+    video: "https://www.youtube.com/embed/N458Vi0wNyM",
   },
 
   {
@@ -64,6 +70,8 @@ const especies = [
     audio: gallitoRocaAudio,
     descripcion:
       "Ave emblemática de los Andes, reconocida por su llamativo plumaje naranja y su cresta en forma de disco. Habita bosques de niebla cercanos a la ciudad.",
+    ubicacion: "PNN Farallones de Cali (Sector San Antonio y Km 18)",
+    video: "https://www.youtube.com/embed/qQ3vKFkQRA0",
   },
 
   {
@@ -75,6 +83,8 @@ const especies = [
     audio: toritoAudio,
     descripcion:
       "Ave de tamaño pequeño con marcado dimorfismo sexual: el macho luce cabeza roja intensa. Habita bosques húmedos de montaña en los alrededores de Cali.",
+    ubicacion: "Bosques de niebla del Km 18 y Cuenca Alta del Río Pance",
+    video: "https://www.youtube.com/embed/Jg7gnuusQRM",
   },
 ];
 
