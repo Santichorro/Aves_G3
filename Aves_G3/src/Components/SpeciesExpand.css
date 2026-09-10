@@ -54,6 +54,14 @@
   color: #ffffff;
 }
 
+.species-tags-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
 .species-expand-tag {
   display: inline-block;
   text-transform: uppercase;
@@ -62,7 +70,6 @@
   letter-spacing: 0.03em;
   padding: 0.3rem 0.6rem;
   border-radius: 0.25rem;
-  margin-bottom: 0.4rem;
 }
 
 .species-expand-tag--residente {
@@ -76,6 +83,29 @@
   border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
+.species-prob-tag {
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.25rem;
+  color: #ffffff !important;
+}
+
+.species-prob-tag--alta {
+  background-color: #10b981;
+}
+
+.species-prob-tag--media {
+  background-color: #f59e0b;
+}
+
+.species-prob-tag--baja {
+  background-color: #ef4444;
+}
+
 .species-expand-info h3 {
   margin: 0;
   font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
@@ -86,8 +116,17 @@
 .species-expand-cientifico {
   font-style: italic;
   font-size: 0.85rem;
-  margin: 0.2rem 0 0.5rem;
+  margin: 0.2rem 0 0.4rem;
   color: #ffffff;
+}
+
+/* Badge de horario en el hover */
+.species-expand-time-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #fef08a !important;
+  font-weight: 600;
+  margin-bottom: 0.45rem;
 }
 
 .species-expand-desc {
@@ -168,10 +207,9 @@
   text-transform: capitalize;
 }
 
-/* =========================================
-   MODAL FLOTANTE (TEXTO BLANCO Y LIMITACIONES)
-========================================= */
-
+/* =======================================================
+   MODAL FLOTANTE
+======================================================= */
 .species-modal-backdrop {
   position: fixed;
   inset: 0;
@@ -245,7 +283,6 @@
   color: #ffffff !important;
 }
 
-/* Forzar todo el texto interno del modal a blanco */
 .species-modal-info *,
 .species-modal-info h2,
 .species-modal-info p,
@@ -262,22 +299,88 @@
   text-transform: capitalize;
 }
 
-.species-modal-location {
-  background: rgba(255, 255, 255, 0.1) !important;
-  padding: 0.55rem 0.85rem;
+/* Caja de horario en el Modal */
+.species-modal-meta-box {
+  background: rgba(250, 204, 21, 0.12) !important;
+  border-left: 3px solid #facc15;
+  padding: 0.5rem 0.85rem;
   border-radius: 0.5rem;
   font-size: 0.8rem;
-  margin: 0.6rem 0 0.8rem;
+  margin: 0.55rem 0 0.45rem;
+  color: #fef08a !important;
+}
+
+.species-modal-location {
+  background: rgba(255, 255, 255, 0.1) !important;
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  margin: 0.45rem 0 0.6rem;
   border-left: 3px solid var(--accent, #10b981);
 }
 
-/* Adaptación Celular */
+/* BOTONES DE NAVEGACIÓN */
+.species-modal-nav-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin: 0.6rem 0 0.8rem;
+}
+
+.species-btn-mapa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff !important;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.species-btn-mapa:hover {
+  background: var(--accent, #10b981);
+  border-color: var(--accent, #10b981);
+  transform: translateY(-1px);
+}
+
+.species-btn-route {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #ffffff !important;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.species-btn-route:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
 @media (max-width: 700px) {
   .species-modal-media,
   .species-modal-img-wrapper {
     height: 170px;
   }
-
   .species-expand-info {
     padding: 1rem;
   }
